@@ -1,11 +1,20 @@
+using Web_Scraping.Mappers;
+using Web_Scraping.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+//Mappers
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//Dependencies
+builder.Services.AddScoped<IScrapperService, ScrapperService>();
 
 var app = builder.Build();
 
