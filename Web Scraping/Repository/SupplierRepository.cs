@@ -7,7 +7,7 @@ namespace Web_Scraping.Repository
     public class SupplierRepository : ISupplierRepository
     {
         private readonly Context _context;
-        private SupplierRepository(Context context)
+        public SupplierRepository(Context context)
         {
             _context = context;
         }

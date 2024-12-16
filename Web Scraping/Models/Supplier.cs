@@ -39,7 +39,7 @@ namespace Web_Scraping.Models
 
         //Página Web
         [Column("WEB_PAGE", TypeName = "VARCHAR(100)")]
-        public required int WebPage { get; set; }
+        public required string WebPage { get; set; }
 
 
         //Dirección física
@@ -53,8 +53,8 @@ namespace Web_Scraping.Models
 
 
         //Facturación anual en dólares
-        [Column("ANNUAL_TURNOVER", TypeName = "VARCHAR(100)")]
-        public string? AnnualTurnover { get; set; }
+        [Column("ANNUAL_TURNOVER", TypeName = "INT")]
+        public int? AnnualTurnover { get; set; }
 
 
         //Fecha última de edición

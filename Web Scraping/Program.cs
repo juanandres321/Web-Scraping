@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Web_Scraping.Mappers;
 using Web_Scraping.Models;
+using Web_Scraping.Repository;
 using Web_Scraping.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,8 @@ builder.Services.AddSwaggerGen();
 //Dependencies
 builder.Services.AddScoped<IScrapperService, ScrapperService>();
 
+builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
+builder.Services.AddScoped<ISupplierService, SupplierService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
