@@ -1,10 +1,14 @@
+using Microsoft.EntityFrameworkCore;
 using Web_Scraping.Mappers;
+using Web_Scraping.Models;
 using Web_Scraping.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddDbContext<Context>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddControllers();
 
 //Mappers

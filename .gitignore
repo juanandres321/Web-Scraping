@@ -350,6 +350,9 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 
+# Ignore Migrations folder
+Migrations/
+
 # BeatPulse healthcheck temp database
 healthchecksdb
 
