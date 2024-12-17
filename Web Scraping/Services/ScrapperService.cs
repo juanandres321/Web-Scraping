@@ -7,7 +7,7 @@ namespace Web_Scraping.Services
 {
     public class ScrapperService : IScrapperService
     {
-        public async Task<(int, List<Company>)> RunScrapping(string? searchcompany)
+        public async Task<CompanyContainer> RunScrapping(string? searchcompany)
         {
             int hits = 0;
             List<Company> companies = new();
@@ -37,7 +37,7 @@ namespace Web_Scraping.Services
                     await page.WaitForTimeoutAsync(2000);
                 }
 
-                // Esperar a que la tabla esté visible (asegura que la página cargue dinámicamente)
+                // Esperar a que la tabla esté visible
                 await page.WaitForSelectorAsync("//div[@class='k-grid-content k-auto-scrollable']/table/tbody");
 
                 // Seleccionar todas las filas de la tabla
@@ -50,7 +50,7 @@ namespace Web_Scraping.Services
 
                     if (cells != null && cells.Count >= 7) // Asegurar que hay suficientes celdas
                     {
-                        // Usar await antes de Trim()
+                        
                         var fromDateText = (await cells[4].InnerTextAsync()).Trim();
                         var toDateText = (await cells[5].InnerTextAsync()).Trim();
 
@@ -71,7 +71,7 @@ namespace Web_Scraping.Services
 
                         companies.Add(company);
                         hits++;
-                        if (hits > 3)
+                        if (hits > 9)
                             break;
                     }
                 }
@@ -84,8 +84,14 @@ namespace Web_Scraping.Services
             {
                 await browser.CloseAsync();
             }
-
-            return (hits, companies);
+            CompanyContainer result = new CompanyContainer { Companies = companies, Count = hits };
+            return result;
         }
+    }
+    public class CompanyContainer
+    {
+        public List<Company> Companies { get; set; }
+        public int Count { get; set; }
+
     }
 }

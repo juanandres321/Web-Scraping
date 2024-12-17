@@ -4,6 +4,7 @@ using Due_Diligence.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
 using System.Text;
 using Web_Scraping.Mappers;
 using Web_Scraping.Models;
@@ -26,7 +27,10 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Configura Swagger
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+});
 
 //JWT TOKEN
 builder.Services.AddAuthentication(options =>

@@ -4,6 +4,6 @@ namespace Web_Scraping.Services
 {
     public interface IScrapperService
     {
-        Task<(int, List<Company>)> RunScrapping(string? company);
+        Task<CompanyContainer> RunScrapping(string? company);
     }
 }
