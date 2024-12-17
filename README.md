@@ -25,20 +25,22 @@ Clona este repositorio en tu máquina local utilizando Git:
 
 ```bash
 git clone https://github.com/usuario/proyecto-due-diligence.git
-
-### 2.  Configurar la cadena de conexión
+```
+### 2. Configurar la cadena de conexión
 Modifica el archivo appsettings.json en el directorio raíz del proyecto para incluir la cadena de conexión de tu base de datos SQL Server. Un ejemplo de configuración sería:
-      {
+     ``` {
         "ConnectionStrings": {
           "DefaultConnection": "Server=<tu-servidor>;Database=<tu-base-de-datos>;User Id=<tu-usuario>;Password=<tu-contraseña>;"
         }
       }
-
+    ```
 ### 3.  Realizar las migraciones
 Dado que este proyecto utiliza Entity Framework Core con el enfoque Code First, es necesario aplicar las migraciones a la base de datos antes de ejecutarlo.
 Ejecuta los siguientes comandos desde la terminal en el directorio del proyecto:
+    ```
     dotnet ef migrations add InitialMigration
     dotnet ef database update
+    ```
 
 ### 4.  Rellenar la base de datos con datos iniciales
 El proyecto incluye una funcionalidad de seeding para agregar datos iniciales en la base de datos. Esto se realiza automáticamente durante la ejecución del proyecto en el entorno de desarrollo.
@@ -46,13 +48,17 @@ El proyecto incluye una funcionalidad de seeding para agregar datos iniciales en
 ### 5. Configurar Playwright
 Este proyecto utiliza Microsoft Edge como navegador para las funciones automatizadas de Playwright.
 Si Microsoft Edge no está instalado en la ruta predeterminada (C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe), asegúrate de modificar la configuración dentro del código en Playwright para apuntar al ejecutable correcto:
-var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+
+  ``` var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
     {
         ExecutablePath = @"<ruta-completa-al-navegador>",
         Headless = true
     });
+  ```
 
 ### 6. Ejecutar el proyecto
 Finalmente, inicia el servidor ejecutando:
+    ```
     dotnet run
+    ```
 
