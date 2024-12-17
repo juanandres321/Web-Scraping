@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Web_Scraping.DTOs;
 using Web_Scraping.Services;
@@ -14,7 +15,7 @@ namespace Web_Scraping.Controllers
         {
             _supplierService = supplierService;
         }
-
+        [Authorize]
         [HttpGet("GetAll")]
         public async Task<ActionResult<List<SupplierDTO>>> GetAll()
         {

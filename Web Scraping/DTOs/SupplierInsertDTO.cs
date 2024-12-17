@@ -7,7 +7,7 @@
         public required int TaxIdentification { get; set; }
         public required int TelephoneNumber { get; set; }
         public string? EMail { get; set; }
-        public required int WebPage { get; set; }
+        public string? WebPage { get; set; }
         public string? Adress { get; set; }
         public string? Country { get; set; }
         public int? AnnualTurnover { get; set; }

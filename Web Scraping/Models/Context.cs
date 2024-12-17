@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Due_Diligence.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Web_Scraping.Models
 {
@@ -8,10 +9,12 @@ namespace Web_Scraping.Models
 
 
         public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Person> People { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Supplier>().ToTable("Supplier");
+            modelBuilder.Entity<Person>().ToTable("Person");
 
             base.OnModelCreating(modelBuilder);
         }
