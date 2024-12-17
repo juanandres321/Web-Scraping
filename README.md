@@ -24,7 +24,7 @@ Antes de comenzar, asegúrate de tener instalados los siguientes componentes en 
 Clona este repositorio en tu máquina local utilizando Git:
 
 ```bash
-git clone https://github.com/usuario/proyecto-due-diligence.git
+git clone https://github.com/juanandres321/Web-Scraping.git
 ```
 ### 2. Configurar la cadena de conexión
 Modifica el archivo appsettings.json en el directorio raíz del proyecto para incluir la cadena de conexión de tu base de datos SQL Server. Un ejemplo de configuración sería:
