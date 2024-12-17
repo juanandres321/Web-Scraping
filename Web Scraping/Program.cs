@@ -1,3 +1,4 @@
+using Due_Diligence.Models;
 using Due_Diligence.Repository;
 using Due_Diligence.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -80,5 +81,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
+Seeder.Seed(app);
 app.Run();
